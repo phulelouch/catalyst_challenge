@@ -7,6 +7,7 @@ Below is the list of features and their completion status.
 
 - [x] Create a Docker environment with Dockerfile the united with the Assumptions in the task (Ubuntu 22.04, Mysql)
 - [ ] Perform basic requirements
+- [x] Apply Security measurement: DOS (import from CSV)
 - [ ] Apply Security measurement: SQL Injection (import from CSV)
 - [ ] Apply Security measurement: OS Injection
 - [ ] Generate test script

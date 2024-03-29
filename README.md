@@ -1,7 +1,14 @@
 # catalyst_challenge
 
 
-# Feature Completion Status
+## Table of Contents
+
+- [Catalyst Challenge](#catalyst_challenge)
+  - Table of Contents(#table_of_contents)
+  - [Feature Completion Status](#features_completion_status)
+
+## Feature Completion Status
+
 
 Below is the list of features and their completion status. 
 

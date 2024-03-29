@@ -1,10 +1,10 @@
 # catalyst_challenge
 
 
-## Table Of Contents
+## Table of Contents
 
 - [Catalyst Challenge](#catalyst_challenge)
-  - Table Of Contents(#table_of_contents)
+  - Table of Contents(#table-of-contents)
   - [Feature Completion Status](#features_completion_status)
 
 ## Feature Completion Status

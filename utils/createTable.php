@@ -4,7 +4,7 @@ function createDB($conn, $database) {
     //create DATABASE users
     $sqlCreateDB = "CREATE DATABASE IF NOT EXISTS $database";
     if ($conn->query($sqlCreateDB) === TRUE) {
-        echo "Database created successfully or already exists\n";
+        echo "Database 'users' created successfully or already exists\n";
     } else {
         echo "Error creating database: " . $conn->error;
         return;
@@ -13,7 +13,6 @@ function createDB($conn, $database) {
     $conn->select_db($database);
 
     //Create TABLE users
-
     $sqlCreateTable = "CREATE TABLE IF NOT EXISTS users (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(30) NOT NULL,

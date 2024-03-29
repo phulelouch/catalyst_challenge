@@ -1,6 +1,7 @@
 <?php
+  include 'utils/showHelp.php';
   // Test connection
-  $options = getopt("u:p:h:");
+  $options = getopt("u:p:h:", ["file:", "create_table", "dry_run", "help"]);
   $host = $options["h"] ?? 'localhost'; 
   $username = $options["u"] ?? 'root'; 
   $password = $options["p"] ?? ''; 
@@ -11,7 +12,12 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   } else {
-      echo "\nSuccess\n";
+      echo "\nConnection success\n";
+  }
+
+  if (isset($options["help"])) {
+      showHelp();
+      exit;
   }
 
 

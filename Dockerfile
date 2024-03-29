@@ -14,6 +14,7 @@ WORKDIR /usr/src/app
 COPY user_upload.php .
 COPY users.csv .
 COPY start.sh .
+COPY utils/ ./utils/
 
 RUN chmod +x ./start.sh
 

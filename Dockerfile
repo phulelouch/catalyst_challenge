@@ -12,9 +12,9 @@ RUN apt-get update && \
 WORKDIR /usr/src/app
 
 COPY user_upload.php .
+COPY users.csv .
 COPY start.sh .
 
-# Make sure the script is executable
 RUN chmod +x ./start.sh
 
 ENTRYPOINT ["./start.sh"]

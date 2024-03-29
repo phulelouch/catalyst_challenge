@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [Catalyst Challenge](#catalyst_challenge)
-  - Table of Contents(#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Feature Completion Status](#features_completion_status)
 
 ## Feature Completion Status

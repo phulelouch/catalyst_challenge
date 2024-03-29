@@ -1,10 +1,12 @@
 <?php
   include 'utils/showHelp.php';
+  include 'utils/createTable.php';
   // Test connection
-  $options = getopt("u:p:h:", ["file:", "create_table", "dry_run", "help"]);
+  // In here I set default username and password, which is not a good security practice. But in return for fast running command without args -> efficiency
+  $options = getopt("u:p:h:", ["file:", "create_table", "dry-run", "help"]);
   $host = $options["h"] ?? 'localhost'; 
-  $username = $options["u"] ?? 'root'; 
-  $password = $options["p"] ?? ''; 
+  $username = $options["u"] ?? 'phulelouch'; 
+  $password = $options["p"] ?? 'phulelouch'; 
   $database = 'users'; 
 
   $conn = new mysqli($host, $username, $password, $database);
@@ -15,10 +17,18 @@
       echo "\nConnection success\n";
   }
 
+  //Show help options
   if (isset($options["help"])) {
       showHelp();
       exit;
   }
+
+  //Create table
+  if (isset($options["create_table"])) {
+    createDB($conn, $database);
+  }
+
+  
 
 
   $conn->close();

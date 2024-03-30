@@ -5,7 +5,8 @@ function validateEmail($email) { // In case we want to add more filters?
         return false;
     }
 
-    $disallowedCharsPattern = "/['!\"]/"; //I will make the assumtion here that we will not allow ',!'"
+    //$disallowedCharsPattern = "/['!\"={?^*~,|{}+&]/"; //I will make the assumtion here that we will not allow ',!'"
+    $disallowedCharsPattern = "/['!\"={}?^*~|{}+&<>\\[\\]\\(\\)\\$%#;:\\/\\\\]/"; // I will make the assumtion here that we are not allow special characters
     if (preg_match($disallowedCharsPattern, $email)) {
         return false;
     }
@@ -22,11 +23,27 @@ function checkTableExist($conn){
     }
 }
 
+function emailExists($conn, $email) {
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    
+    return $count > 0;
+}
+
 function insertDB($conn, $name, $surname, $email){
     if(!checkTableExist($conn)){ //in case table not there
         echo "Table users not found! Creating one now";
         createDB($conn);
     }
+
+    if (emailExists($conn, $email)) {     // incase duplicate email address
+        echo "Warning: A user with the email <$email> already exists. Skipping.\n";
+        return;
+    }
+
     $stmt = $conn->prepare("INSERT INTO users (name, surname, email) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $name, $surname, $email); //Also prevent SQL Injection Reference: https://www.acunetix.com/blog/articles/prevent-sql-injection-vulnerabilities-in-php-applications/
 

@@ -1,5 +1,12 @@
 # catalyst_challenge
 
+Beside all the basic requirements, the script also include these features:
+
+- [x] Can be run independently with Docker
+- [x] Security implementation (SQL Injection, DOS)
+- [x] Test script to generate a CSV file for test
+- [x] Frontend web for easy testing
+
 ## Table of Contents
 
 - [Catalyst Challenge](#catalyst_challenge)

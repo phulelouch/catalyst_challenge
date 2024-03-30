@@ -35,6 +35,9 @@ Below is the list of features and their completion status.
    docker build -t catalyst .
    ```
 ## How to run the script  
+
+[![asciicast](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah.svg)](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah)
+
 1. Run with the assumptions environment
 
 2. Access the docker terminal and run the script:

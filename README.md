@@ -40,18 +40,9 @@ Below is the list of features and their completion status.
 
 1. Run with the assumptions environment
 
-2. Access the docker terminal and run the script:
-  - Access /bin/bash:
-  ```bash
-   #Access the terminal inside docker
-   docker run -it --rm catalyst /bin/bash
-   ```
-  - Run the script:
-   ```bash
-    php user_upload.php [options]  
-   ```
 
-3. Run the script directly
+
+2. Run the script directly
 
 *Note: This will not preserve the database since the database is in the docker as php script (all inside the Ubuntu docker).*
 *This is the assumptions I made: in case the database is outside of docker we can expose the docker and the script will still run as an independence tools.*
@@ -61,6 +52,17 @@ Below is the list of features and their completion status.
     #Run directly like ... --help
     docker run -it --rm catalyst --file test_data.csv
   ```
+
+3. Access the docker terminal and run the script:
+  - Access /bin/bash:
+  ```bash
+   #Access the terminal inside docker
+   docker run -it --rm catalyst /bin/bash
+   ```
+  - Run the script:
+   ```bash
+    php user_upload.php [options]  
+   ```
 
 ## How to use the test script
 *In addition I create a script to create CSV file for testing. This script will add invalid special characters at random point to test the filters ability*

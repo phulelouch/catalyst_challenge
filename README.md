@@ -8,6 +8,7 @@
   - [Installation](#installation)
   - [How to run the script](#how_to_run_the_script)
   - [How to use the test script](how_to_use_the_test_script)
+  - [How to use web](#how_to_use_web)
 
 ## Feature Completion Status
 
@@ -26,6 +27,8 @@ Below is the list of features and their completion status.
 - [ ] Expose the docker so that it can insert into other Mysql database outside
 
 ## Installation
+There are 2 options:
+
 1. Install the assumptions environment: Ubuntu 22.04, php8.1, mysql
 
 2. Build the docker:
@@ -35,6 +38,7 @@ Below is the list of features and their completion status.
    ```
 ## How to run the script  
 
+*Please refer to this asciicast for easy installation and use*
 [![asciicast](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah.svg)](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah)
 
 1. Run with the assumptions environment
@@ -70,7 +74,14 @@ Below is the list of features and their completion status.
 ```
 The test csv name is: test_data.csv after that, use as normal and use the test_data.csv instead of users.csv
 
+## How to use web
 
+The frontend is a simple features use php/html for testing the script faster
 
+ ```bash
+    #expose port 3000
+    docker run -p 3000:3000 -it --rm catalyst web
+```
+Open your browser at http://localhost:3000/
 
 

@@ -45,7 +45,9 @@ There are 2 options:
    ```
 ## How to run the script  
 
+### VIDEO:
 *Please refer to this asciicast for easy installation and use*
+
 [![asciicast](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah.svg)](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah)
 
 1. Run with the assumptions environment

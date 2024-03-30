@@ -4,7 +4,7 @@
   include 'utils/processCsv.php';
   include 'utils/dbConnection.php';
   // Test connection
-  // In here I set default username and password, which is not a good security practice. But in return for fast running command without args -> efficiency
+  // In here I set default username and password, which is not a good security practice. But in return for fast testing/debuging without args -> efficiency
   $options = getopt("u:p:h:", ["file:", "create_table", "dry_run", "help"]);
 
   $host = $options["h"] ?? 'localhost'; 

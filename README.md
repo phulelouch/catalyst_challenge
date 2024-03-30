@@ -20,4 +20,4 @@ Below is the list of features and their completion status.
 - [ ] Generate test script
 - [ ] A frontend web for easy test
 - [ ] Create a docker-compose.yml to have a seperate volume so that we can do docker run directly without have to use /bin/bash
-- [ ] Fix the database config, it is better to create a DBConfig class 
+- [ ] Fix the database config, it is better to create a DBConfig class or create a .env 

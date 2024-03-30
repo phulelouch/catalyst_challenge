@@ -1,6 +1,5 @@
 # catalyst_challenge
 
-
 ## Table of Contents
 
 - [Catalyst Challenge](#catalyst_challenge)
@@ -68,8 +67,8 @@ Below is the list of features and their completion status.
  ```bash
     #File output at the location of running
     php test/test.php
-  ```
-
+```
+The test csv name is: test_data.csv after that, use as normal and use the test_data.csv instead of users.csv
 
 
 

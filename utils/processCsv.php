@@ -6,7 +6,8 @@ function validateEmail($email) { // In case we want to add more filters?
     }
 
     //$disallowedCharsPattern = "/['!\"={?^*~,|{}+&]/"; //I will make the assumtion here that we will not allow ',!'"
-    $disallowedCharsPattern = "/['!\"={}?^*~|{}+&<>\\[\\]\\(\\)\\$%#;:\\/\\\\]/"; // I will make the assumtion here that we are not allow special characters
+    // I will make the assumtion here that we are not allow special characters so mo'connor@cat.net.nz. won't be valid to me
+    $disallowedCharsPattern = "/['!\"={}?^*~|{}+&<>\\[\\]\\(\\)\\$%#;:\\/\\\\]/"; 
     if (preg_match($disallowedCharsPattern, $email)) {
         return false;
     }

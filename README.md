@@ -6,7 +6,9 @@
 - [Catalyst Challenge](#catalyst_challenge)
   - [Table of Contents](#table-of-contents)
   - [Feature Completion Status](#features_completion_status)
- - [Feature Completion Status](#features_completion_status)
+  - [Installation](#installation)
+  - [How to run the script](#how_to_run_the_script)
+  - [How to use the test script](how_to_use_the_test_script)
 
 ## Feature Completion Status
 
@@ -18,7 +20,7 @@ Below is the list of features and their completion status.
 - [x] Apply Security measurement: DOS (import from CSV)
 - [x] Apply Security measurement: SQL Injection (import from CSV)
 - [ ] Apply Security measurement: OS Injection
-- [ ] Generate test script
+- [x] Generate test script
 - [ ] A frontend web for easy test
 - [ ] Create a docker-compose.yml to have a seperate volume so that we can do docker run directly without have to use /bin/bash
 - [ ] Fix the database config, it is better to create a DBConfig class or create a .env 
@@ -32,7 +34,7 @@ Below is the list of features and their completion status.
    #Build the docker
    docker build -t catalyst .
    ```
-## Run the script  
+## How to run the script  
 1. Run with the assumptions environment
 
 2. Access the docker terminal and run the script:
@@ -51,10 +53,22 @@ Below is the list of features and their completion status.
 *Note: This will not preserve the database since the database is in the docker as php script (all inside the Ubuntu docker).*
 *This is the assumptions I made: in case the database is outside of docker we can expose the docker and the script will still run as an independence tools.*
 
-  - Run with script:
+  - Parse the argument into it directly:
   ```bash
-    #Run directly
+    #Run directly like ... --help
     docker run -it --rm catalyst --file test_data.csv
   ```
+
+## How to use the test script
+*In addition I create a script to create CSV file for testing. This script will add invalid special characters at random point to test the filters ability*
+
+ ```bash
+    #File output at the location of running
+    php test/test.php
+  ```
+
+
+
+
 
 

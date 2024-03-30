@@ -13,6 +13,11 @@ function validateEmail($email) { // In case we want to add more filters?
     return true;
 }
 
+// Filter for name and surname
+function filterSpecialChars($string) {
+    return preg_replace('/[^A-Za-z0-9\s]/', '', $string);
+}
+
 function checkTableExist($conn){
     $sql = "SHOW TABLES LIKE 'users'";
     $result = $conn->query($sql);
@@ -54,9 +59,7 @@ function insertDB($conn, $name, $surname, $email){
     }
 }
 
-function filterSpecialChars($string) {
-        return preg_replace('/[^A-Za-z0-9\s\-\'\.]/', '', $string);
-}
+
 
 
 function processCSV($filePath, $conn, $isDryRun) {

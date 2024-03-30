@@ -1,6 +1,7 @@
 <?php
 
-function createDB($conn, $database) {
+function createDB($conn) {
+    $database = 'users'; //Since the database is fixed, else I would create a DBConfigClass, but I assume this is okay for now
     //create DATABASE users
     $sqlCreateDB = "CREATE DATABASE IF NOT EXISTS $database";
     if ($conn->query($sqlCreateDB) === TRUE) {

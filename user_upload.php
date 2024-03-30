@@ -5,7 +5,7 @@
   include 'utils/dbConnection.php';
   // Test connection
   // In here I set default username and password, which is not a good security practice. But in return for fast running command without args -> efficiency
-  $options = getopt("u:p:h:", ["file:", "create_table", "dry-run", "help"]);
+  $options = getopt("u:p:h:", ["file:", "create_table", "dry_run", "help"]);
 
   $host = $options["h"] ?? 'localhost'; 
   $username = $options["u"] ?? 'phulelouch'; 
@@ -24,12 +24,15 @@
 
   //Create table
   if (isset($options["create_table"])) {
-    createDB($conn, $database);
+    createDB($conn);
   }
 
-  //Create table
+  #Dry run option
+  $isDryRun = isset($options["file"]);
+
+  //File option
   if (isset($options["file"])) {
-    processCsv($options['file']);
+    processCsv($options['file'], $conn);
   }
 
   

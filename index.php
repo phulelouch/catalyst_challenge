@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <form action="" method="post">
-        <h2>CSV File Name:</h2>
+        CSV File Name:
             <input type="text" name="csv_name" placeholder="CSV file name">
             <div>
                 <input type="checkbox" id="dry_run" name="dry_run">

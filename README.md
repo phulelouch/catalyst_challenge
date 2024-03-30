@@ -91,4 +91,9 @@ The frontend is a simple features use php/html for testing the script faster
 ```
 Open your browser at http://localhost:3000/
 
+<p align="center">
+  <img src="web.png" alt="Frontend example">
+</p>
+
+
 

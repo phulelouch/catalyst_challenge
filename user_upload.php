@@ -28,11 +28,12 @@
   }
 
   #Dry run option
-  $isDryRun = isset($options["file"]);
+  $isDryRun = isset($options["dry_run"]);
+  
 
   //File option
   if (isset($options["file"])) {
-    processCsv($options['file'], $conn);
+    processCsv($options['file'], $conn, $isDryRun);
   }
 
   

@@ -42,7 +42,7 @@ function filterSpecialChars($string) {
 }
 
 
-function processCSV($filePath, $conn) {
+function processCSV($filePath, $conn, $isDryRun) {
 
     if (!file_exists($filePath) || !is_readable($filePath)) {
         echo "File not found or not readable: $filePath\n";
@@ -59,7 +59,7 @@ function processCSV($filePath, $conn) {
             break;
         }
 
-        // for line 8 HAMISH,jones,,ham@seek.com
+        // incase example like line 8 HAMISH,jones,,ham@seek.com
         if (empty(trim($data[0])) || empty(trim($data[1])) || empty(trim($data[2]))) {
             echo "Warning: Missing data in one of the mandatory fields (name, surname, email). Skipping row.\n";
             continue;
@@ -69,16 +69,21 @@ function processCSV($filePath, $conn) {
         $name = filterSpecialChars(ucfirst(strtolower(trim($data[0]))));
         $surname = filterSpecialChars(ucfirst(strtolower(trim($data[1]))));
         $email = strtolower(trim($data[2]));
-        // print("Name: ".$name."\n");
-        // print("Surname: ".$surname."\n");
-        // print("Email: ".$email."\n");
+       
 
         if (!validateEmail($email)) {
             echo "Warning: Invalid email format: $email. Skipping.\n";
             continue;
         }
 
-        insertDB($conn, $name, $surname, $email);
+        // if DryRun options, which I guess for testing. Then just print it out
+        if(!$isDryRun){
+            insertDB($conn, $name, $surname, $email);
+        }else{
+            print("Name: ".$name."\n");
+            print("Surname: ".$surname."\n");
+            print("Email: ".$email."\n");
+        }
 
         $rowCount++;
     }

@@ -44,7 +44,7 @@ There are 2 options:
    #Build the docker
    docker build -t catalyst .
    ```
-## How to run the script  
+## How to run the script
 
 ### VIDEO:
 *Please refer to this asciicast for easy installation and use*

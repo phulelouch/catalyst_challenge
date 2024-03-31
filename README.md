@@ -2,7 +2,8 @@
 
 Beside all the basic requirements, the script also include these features:
 
-- [x] Can be run independently with Docker
+- [x] Can be run independently from host env with Docker
+- [x] Use directly with [docker run](how_to_run_the_script) 
 - [x] Security implementation (SQL Injection, DOS)
 - [x] Test script to generate a CSV file for test
 - [x] Frontend web for easy testing

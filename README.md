@@ -15,7 +15,7 @@ Beside all the basic requirements, the script also include these features:
   - [Table of Contents](#table-of-contents)
   - [Feature Completion Status](#features-completion-status)
   - [Installation](#installation)
-    -[Database Credentials](#database-credentials)
+    - [Database Credentials](#database-credentials)
   - [Usage](#usage)
   - [How to use the test script](#how-to-use-the-test-script)
   - [How to use web](#how-to-use-web)

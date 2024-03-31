@@ -104,5 +104,12 @@ Open your browser at http://localhost:3000/
   <img src="web.png" alt="Frontend example">
 </p>
 
+## AI usage
+
+AI was use to help with:
+- Unknow syntax and functions like: ucfirst, getopt
+- Help with regex syntax
+- Help with creating test script
+
 
 

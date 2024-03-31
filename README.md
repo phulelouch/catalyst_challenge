@@ -1,5 +1,6 @@
-# catalyst_challenge
+# User Upload Script
 
+The user_upload.php is a CLI tools that accepts a CSV file as input (see command line directives below) and processes the CSV file. The parsed file data is to be inserted into a MySQL database.
 Beside all the basic requirements, the script also include these features:
 
 - [x] Can be run independently from host env with Docker

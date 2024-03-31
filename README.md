@@ -74,6 +74,12 @@ There are 2 options:
     #Run directly like ... --help
     docker run -it --rm catalyst --file test_data.csv
   ```
+  - Tips:
+  ```bash
+    #Run alias to create a alias so that you don't have to type too many times
+    alias catalyst='docker run -it --rm catalyst'
+  ```
+
 
 ## How to use the test script
 *In addition I create a script to create CSV file for testing. This script will add invalid special characters at random point to test the filters ability*

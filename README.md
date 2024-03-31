@@ -12,11 +12,11 @@ Beside all the basic requirements, the script also include these features:
 
 - [Catalyst Challenge](#catalyst_challenge)
   - [Table of Contents](#table-of-contents)
-  - [Feature Completion Status](#features_completion_status)
+  - [Feature Completion Status](#features-completion-status)
   - [Installation](#installation)
-  - [How to run the script](#how_to_run_the_script)
-  - [How to use the test script](how_to_use_the_test_script)
-  - [How to use web](#how_to_use_web)
+  - [How to run the script](#how-to-run-the-script)
+  - [How to use the test script](#how-to-use-the-test-script)
+  - [How to use web](#how-to-use-web)
 
 ## Feature Completion Status
 

@@ -4,7 +4,7 @@ The user_upload.php is a CLI tools that accepts a CSV file as input (see command
 Beside all the basic requirements, the script also include these features:
 
 - [x] Can be run independently from host env with Docker
-- [x] Use directly with [docker run](#how-to-run-the-script) 
+- [x] Use directly with [docker run](#usage) 
 - [x] Security implementation (SQL Injection, DOS)
 - [x] Test script to generate a CSV file for test
 - [x] Frontend web for easy testing
@@ -15,7 +15,8 @@ Beside all the basic requirements, the script also include these features:
   - [Table of Contents](#table-of-contents)
   - [Feature Completion Status](#features-completion-status)
   - [Installation](#installation)
-  - [How to run the script](#how-to-run-the-script)
+    -[Database Credentials](#database-credentials)
+  - [Usage](#usage)
   - [How to use the test script](#how-to-use-the-test-script)
   - [How to use web](#how-to-use-web)
 
@@ -45,7 +46,19 @@ There are 2 options:
    #Build the docker
    docker build -t catalyst .
    ```
-## How to run the script
+### Database Credentials
+
+- Set default if not provided:
+
+```env
+DB_HOST=localhost 
+DB_NAME=users
+DB_USER=phulelouch 
+DB_PASSWORD=phulelouch
+```
+
+
+## Usage
 
 ### VIDEO:
 *Please refer to this asciicast for easy installation and use*

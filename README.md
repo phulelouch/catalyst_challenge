@@ -17,7 +17,7 @@ Beside all the basic requirements, the script also include these features:
   - [Installation](#installation)
     - [Database Credentials](#database-credentials)
   - [Usage](#usage)
-    - [Asciicast Video][#video]
+    - [Asciicast Video](#video)
   - [How to use the test script](#how-to-use-the-test-script)
   - [How to use web](#how-to-use-web)
 

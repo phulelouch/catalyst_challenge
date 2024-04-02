@@ -29,7 +29,9 @@
 
   #Dry run option
   $isDryRun = isset($options["dry_run"]);
-  
+  if ($isDryRun and !isset($options["file"])){
+    die("You need to provide --file 'filepath' to use dry_run\n");
+  }
 
   //File option
   if (isset($options["file"])) {

@@ -1,4 +1,6 @@
 <?php
+include 'checkCsvHeader.php';
+
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 function validateEmail($email) { // In case we want to add more filters? 
     
@@ -71,9 +73,8 @@ function insertDB($conn, $name, $surname, $email){
 
 function processCSV($filePath, $conn, $isDryRun) {
 
-    if (!file_exists($filePath) || !is_readable($filePath)) {
-        echo "File not found or not readable: $filePath\n";
-        return;
+    if (!checkCsvHeader($filePath)) {
+        throw new Exception("Headers not match");
     }
 
     try {

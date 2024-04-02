@@ -26,7 +26,7 @@ function generateRandomData($numEntries) {
             $email = substr_replace($email, getRandomSpecialChars(1), rand(1, strlen($email) - 1), 0);
         }
 
-        $data[] = [$name, $surname, $email];
+        $data[] = [$name, $surname, $email,''];
     }
 
     return $data;
@@ -37,7 +37,7 @@ function createCSV($filePath, $data) {
     if ($file === false) {
         die('Error opening the file ' . $filePath);
     }
-    fputcsv($file, ['Name', 'Surname', 'Email']);
+    fputcsv($file, ['name', 'surname', 'email', '']);
 
     foreach ($data as $row) {
         fputcsv($file, $row);

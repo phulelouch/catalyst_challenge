@@ -12,14 +12,8 @@
   $password = $options["p"] ?? 'phulelouch'; 
   $database = 'users'; 
 
-  try {
-    $dbConnection = new DatabaseConnection($host, $username, $password, $database);
-    $conn = $dbConnection->getConnection();
-  } catch (Exception $e) {
-      // Handle exception
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
-      exit;
-  }
+  $dbConnection = new DatabaseConnection($host, $username, $password, $database);
+  $conn = $dbConnection->getConnection();
 
   //Show help options
   if (isset($options["help"])) {

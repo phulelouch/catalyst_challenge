@@ -1,4 +1,5 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 function validateEmail($email) { // In case we want to add more filters? 
     
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -20,23 +21,28 @@ function filterSpecialChars($string) {
 }
 
 function checkTableExist($conn){
-    $sql = "SHOW TABLES LIKE 'users'";
-    $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-        return true;
-    } else {
+    try {
+        $sql = "SHOW TABLES LIKE 'users'";
+        $result = $conn->query($sql);
+        return $result && $result->num_rows > 0; //if there is table
+    } catch (mysqli_sql_exception $e) {
+        echo "Database error: " . $e->getMessage() . "\n";
         return false;
     }
 }
 
 function emailExists($conn, $email) {
-    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    
-    return $count > 0;
+    try {
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        return $count > 0;
+    } catch (mysqli_sql_exception $e) {
+        echo "Database error: " . $e->getMessage() . "\n";
+        return false;
+    }
 }
 
 function insertDB($conn, $name, $surname, $email){
@@ -50,13 +56,13 @@ function insertDB($conn, $name, $surname, $email){
         return;
     }
 
-    $stmt = $conn->prepare("INSERT INTO users (name, surname, email) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $surname, $email); //Also prevent SQL Injection Reference: https://www.acunetix.com/blog/articles/prevent-sql-injection-vulnerabilities-in-php-applications/
-
-    if ($stmt->execute()) {
+    try {
+        $stmt = $conn->prepare("INSERT INTO users (name, surname, email) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $surname, $email);
+        $stmt->execute();
         echo "Record inserted: $name $surname <$email>\n";
-    } else {
-        echo "Error inserting record: " . $stmt->error . "\n";
+    } catch (mysqli_sql_exception $e) {
+        echo "Error inserting record: " . $e->getMessage() . "\n";
     }
 }
 
@@ -70,47 +76,52 @@ function processCSV($filePath, $conn, $isDryRun) {
         return;
     }
 
-    $file = fopen($filePath, 'r');
-    $rowCount = 0; 
-    $rowLimit = 10000; // Limit for too much data => Denial of service
+    try {
 
-    while (($data = fgetcsv($file)) !== FALSE) {
-        if ($rowCount > $rowLimit ) {
-            echo "More than $rowLimit rows, stop, only process $rowLimit rows max\n";
-            break;
+        $file = fopen($filePath, 'r');
+        $rowCount = 0; 
+        $rowLimit = 10000; // Limit for too much data => Denial of service
+
+        while (($data = fgetcsv($file)) !== FALSE) {
+            if ($rowCount > $rowLimit ) {
+                echo "More than $rowLimit rows, stop, only process $rowLimit rows max\n";
+                break;
+            }
+
+            // incase example like line 8 HAMISH,jones,,ham@seek.com
+            if (empty(trim($data[0])) || empty(trim($data[1])) || empty(trim($data[2]))) {
+                echo "Warning: Missing data in one of the mandatory fields (name, surname, email). Skipping row.\n";
+                continue;
+            }
+
+            #print_r($data);
+            $name = filterSpecialChars(ucfirst(strtolower(trim($data[0]))));
+            $surname = filterSpecialChars(ucfirst(strtolower(trim($data[1]))));
+            $email = strtolower(trim($data[2]));
+        
+
+            if (!validateEmail($email)) {
+                echo "Warning: Invalid email format: $email. Skipping.\n";
+                continue;
+            }
+
+            // if DryRun options, which I guess for testing. Then just print it out
+            if(!$isDryRun){
+                insertDB($conn, $name, $surname, $email);
+            }else{
+                print("Name: ".$name."\n");
+                print("Surname: ".$surname."\n");
+                print("Email: ".$email."\n");
+            }
+
+            $rowCount++;
         }
 
-        // incase example like line 8 HAMISH,jones,,ham@seek.com
-        if (empty(trim($data[0])) || empty(trim($data[1])) || empty(trim($data[2]))) {
-            echo "Warning: Missing data in one of the mandatory fields (name, surname, email). Skipping row.\n";
-            continue;
-        }
 
-        #print_r($data);
-        $name = filterSpecialChars(ucfirst(strtolower(trim($data[0]))));
-        $surname = filterSpecialChars(ucfirst(strtolower(trim($data[1]))));
-        $email = strtolower(trim($data[2]));
-       
-
-        if (!validateEmail($email)) {
-            echo "Warning: Invalid email format: $email. Skipping.\n";
-            continue;
-        }
-
-        // if DryRun options, which I guess for testing. Then just print it out
-        if(!$isDryRun){
-            insertDB($conn, $name, $surname, $email);
-        }else{
-            print("Name: ".$name."\n");
-            print("Surname: ".$surname."\n");
-            print("Email: ".$email."\n");
-        }
-
-        $rowCount++;
+        fclose($file);
+    } catch (Exception $e) {
+        echo "File error: " . $e->getMessage() . "\n";
     }
-
-
-    fclose($file);
 }
 
 

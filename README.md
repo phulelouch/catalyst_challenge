@@ -65,6 +65,8 @@ DB_PASSWORD=phulelouch
 *Please refer to this asciicast for easy installation and use*
 
 [![asciicast](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah.svg)](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah)
+If the above doesn't load, click [here](https://asciinema.org/a/ERHWJtk7uQeMncFOaNID5Q0ah) to view the recording.
+
 
 1. Run with the assumptions environment
 

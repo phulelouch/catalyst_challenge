@@ -33,7 +33,8 @@ Below is the list of features and their completion status.
 - [ ] Apply Security measurement: OS Injection
 - [x] Generate test script 
 - [x] A frontend web for easy test
-- [ ] Fix the database config, it is better to create a DBConfig class or create a .env 
+- [ ] Fix the database config, it is better to create a DBConfig class or create a .env
+- [ ] Implement based on OOP (though as I understand the task were to create a script)
 - [ ] Expose the docker so that it can insert into other Mysql database outside
 
 ## Installation
